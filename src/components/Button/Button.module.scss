@@ -1,0 +1,94 @@
+.wrapper {
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 9px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--white);
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &.primary {
+        color: var(--white);
+        background-color: var(--primary);
+        font-size: 1.4rem;
+        border: none;
+
+        &:hover {
+            border-color: var(--primary);
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+        }
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+//Button types
+.rounded {
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.outline {
+    background: transparent;
+    color: #707275;
+    border-color: rgba(232, 128, 17, 1);
+    font-size: 1.4rem;
+    box-shadow: none;
+
+    &:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.normal {
+    border: none;
+}
+
+//Button sizes
+
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.large {
+    width: 100%;
+    padding: 14px 16px;
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.text {
+    border: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}

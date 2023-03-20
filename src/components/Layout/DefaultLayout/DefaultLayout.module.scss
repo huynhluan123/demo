@@ -1,0 +1,14 @@
+.wrapper{
+    display: flex;
+    flex-direction: column; //xep chieu doc
+    align-items: center;
+}
+
+.container{
+    width: var(--Default-layout-width);
+    display: flex;
+}
+
+.content {
+    flex: 1;  //chiem khoan trong con lai
+}
