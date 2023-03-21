@@ -1,28 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
-    faCircleXmark,
     faEarthAsia,
     faEllipsisVertical,
+    faGear,
     faKeyboard,
-    faMagnifyingGlass,
     faRightToBracket,
-    faSpinner,
-    faUserPlus,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
 import image from '~/assets/images';
 import styles from './Header.module.scss';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menus';
 import { Link } from 'react-router-dom';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
+const currentUser = true;
 
 const MENU_ITEM = [
     {
@@ -56,14 +52,6 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 3000);
-    });
-
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
@@ -73,6 +61,21 @@ function Header() {
         }
     };
 
+    const userMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Setting',
+            to: '/setting',
+        },
+        ...MENU_ITEM,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'Log out',
+            to: '/Home',
+            separate: true,
+        },
+    ];
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -81,54 +84,33 @@ function Header() {
                         <img className={cx('logo-news')} src={image.logoNews} alt="University_News" />
                     </Link>
                 </div>
-                <Tippy
-                    interactive // sel vao box
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Tìm kiếm tiêu đề bài viết" spellCheck="false" />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                {currentUser && <Search />}
 
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </Tippy>
                 <div className={cx('action')}>
-                    <Button
-                        className={cx('btn-dn')}
-                        primary
-                        to="/login"
-                        leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                    >
-                        Đăng nhập
-                    </Button>
-                    <Button
-                        className={cx('btn-dk')}
-                        primary
-                        to="/register"
-                        leftIcon={<FontAwesomeIcon icon={faUserPlus} />}
-                    >
-                        Đăng ký
-                    </Button>
-                    <Menu items={MENU_ITEM} onChange={handleMenuChange}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    {currentUser ? (
+                        <></>
+                    ) : (
+                        <Button
+                            className={cx('btn-dn')}
+                            primary
+                            to="/login"
+                            leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                        >
+                            Đăng nhập
+                        </Button>
+                    )}
+                    <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMo03l8HKKj-8SUhLfwJ9qGXw4TvyKWNcLlA&usqp=CAU"
+                                alt="Nguyen Van A"
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
