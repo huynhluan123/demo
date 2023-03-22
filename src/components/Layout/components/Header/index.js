@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import Search from '../Search';
 
 const cx = classNames.bind(styles);
-const currentUser = true;
+const currentUser = false;
 
 const MENU_ITEM = [
     {
@@ -84,7 +84,7 @@ function Header() {
                         <img className={cx('logo-news')} src={image.logoNews} alt="University_News" />
                     </Link>
                 </div>
-                {currentUser && <Search />}
+                <Search />
 
                 <div className={cx('action')}>
                     {currentUser ? (

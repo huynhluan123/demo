@@ -29,11 +29,11 @@ function SignIn() {
                 <div className={cx('content')}>
                     <h2 className={cx('title-login')}>Hello friend !!</h2>
                     <br />
-                    <h3>- Kính chào bạn đã đến với Kênh thông tin của trường !</h3>
+                    <h3>- Kênh thông tin trường ABC</h3>
                     <br />
-                    <h3>- Ở đây chúng ta có thể nắm bắt thông tin, chia sẽ và gớp ý kiến của mình !</h3>
+                    <h3>- Cập nhật tin tức</h3>
                     <br />
-                    <h3>- Hãy đăng nhập vào trang để có thêm thông tin về trường nhé !</h3>
+                    <h3>- Chia sẽ thông tin</h3>
                 </div>
 
                 <div className={cx('logreg-box')}>

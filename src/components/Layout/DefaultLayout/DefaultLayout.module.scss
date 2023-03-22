@@ -1,14 +1,16 @@
-.wrapper{
+.wrapper {
     display: flex;
+    width: 100%;
     flex-direction: column; //xep chieu doc
     align-items: center;
 }
 
-.container{
-    width: var(--Default-layout-width);
+.container {
+    width: 100%;
+    max-width: 100%;
     display: flex;
 }
 
 .content {
-    flex: 1;  //chiem khoan trong con lai
+    flex: 1; //chiem khoan trong con lai
 }

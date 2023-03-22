@@ -1,4 +1,23 @@
 .wrapper {
-    width: 356px;
+    margin-top: var(--default-top);
+    width: 337px;
+    min-height: 500px;
+    margin-left: 5px;
+    position: fixed;
+}
 
+.content {
+    width: 100%;
+}
+
+.btn-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2rem;
+    font-weight: 500;
+
+    &:hover {
+        background-color: rgba(92, 81, 83, 0.06);
+    }
 }
