@@ -23,6 +23,17 @@
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
         }
     }
+
+    &.large {
+        display: flex;
+        width: 100%;
+        padding: 14px 16px;
+        justify-content: center;
+
+        &:hover {
+            background-color: rgba(254, 44, 85, 0.06);
+        }
+    }
 }
 
 .icon {
@@ -71,15 +82,6 @@
 .small {
     min-width: 88px;
     padding: 4px 16px;
-
-    &:hover {
-        background-color: rgba(254, 44, 85, 0.06);
-    }
-}
-
-.large {
-    width: 100%;
-    padding: 14px 16px;
 
     &:hover {
         background-color: rgba(254, 44, 85, 0.06);

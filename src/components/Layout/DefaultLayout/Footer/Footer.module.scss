@@ -1,13 +1,13 @@
 .footer {
     width: 100%;
     height: 200px;
+    background-color: #181821;
+    color: var(--white);
 }
 .wrapper {
     width: 100%;
-    height: 100%;
-    background-color: #181821;
+    height: auto;
     display: flex;
-    color: var(--white);
 }
 
 .content {
@@ -26,4 +26,12 @@
     width: 33%;
     height: auto;
     padding: 12px;
+}
+
+//adress
+.adress {
+}
+
+.title-p {
+    padding-left: 12px;
 }

@@ -4,23 +4,43 @@ import styles from '~/pages/Login/Login.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { account, currentUser } from '~/Story/Blog';
+import { DefaultLayout } from '~/components/Layout';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
-// const accounts = [
-//     {
-//         name: 'luan',
-//         email: 'huynhluan@gmail.com',
-//         password: '123456',
-//     },
-// ];
+
+let accounts = [...account];
 
 function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [login, setLogin] = useState('/login');
     console.log(email, password);
 
-    const handleSignIn = () => {};
+    console.log(currentUser);
+
+    useEffect(() => {
+        let i = 0;
+        let isCheck = false;
+        for (i; i < accounts.length; i++) {
+            if (email === account[i].email && password === account[i].password) {
+                isCheck = true;
+            }
+        }
+        if (isCheck) {
+            setLogin('/');
+        }
+    }, [email, password]);
+
+    const handleSignIn = () => {
+        if (login === '/login') {
+            alert('sai tk mat khau');
+        } else {
+            alert('Dang nhap thanh cong');
+        }
+    };
 
     return (
         <div>
@@ -76,9 +96,9 @@ function SignIn() {
                                     Forgot password
                                 </Link>
                             </div>
-                            <button type="submit" className={cx('btn')} onClick={handleSignIn}>
+                            <Button large to={login} className={cx('btn')} onClick={handleSignIn}>
                                 Sign In
-                            </button>
+                            </Button>
                             <div className={cx('login-register')}>
                                 <p>
                                     Don't have an account?{' '}

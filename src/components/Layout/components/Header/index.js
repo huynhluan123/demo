@@ -16,9 +16,9 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menus';
 import { Link } from 'react-router-dom';
 import Search from '../Search';
+import { currentUser } from '~/Story/Blog';
 
 const cx = classNames.bind(styles);
-const currentUser = false;
 
 const MENU_ITEM = [
     {
