@@ -89,8 +89,6 @@
 }
 
 .text {
+    background-color: transparent;
     border: none;
-    &:hover {
-        text-decoration: underline;
-    }
 }

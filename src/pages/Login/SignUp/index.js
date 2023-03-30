@@ -4,9 +4,42 @@ import styles from '~/pages/Login/Login.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
+import { useStore, action } from '~/Store';
+import { useEffect, useState } from 'react';
+
 const cx = classNames.bind(styles);
 
 function SignUp() {
+    const [state, dispatch] = useStore();
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    let user = { name: name, email: email, password: password, image: '' };
+
+    // console.log(name, email, password);
+
+    console.log(user);
+
+    const handleRegister = () => {
+        let i = 0;
+        let isCheckLogOut = true;
+        const count = state.users.length;
+        for (i; i < count; i++) {
+            if (email === state.users[i].email) {
+                alert('Tài khoản email đã có trên hệ thống Vui lòng đổi email ');
+                isCheckLogOut = false;
+                break;
+            }
+        }
+        if (isCheckLogOut) {
+            alert('Tạo tài khoản thành công');
+
+            dispatch(action.setRegister(user)); // truyen vao handle
+        }
+    };
+
     return (
         <div>
             <div className={cx('background')}></div>
@@ -22,21 +55,36 @@ function SignUp() {
                                 <span className={cx('icon')}>
                                     <FontAwesomeIcon icon={faUser} />
                                 </span>
-                                <input type="text" required></input>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    required
+                                    onChange={(e) => setName(e.target.value)}
+                                ></input>
                                 <label>Name</label>
                             </div>
                             <div className={cx('input-box')}>
                                 <span className={cx('icon')}>
                                     <FontAwesomeIcon icon={faEnvelope} />
                                 </span>
-                                <input type="email" required></input>
+                                <input
+                                    required
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                ></input>
                                 <label>Email</label>
                             </div>
                             <div className={cx('input-box')}>
                                 <span className={cx('icon')}>
                                     <FontAwesomeIcon icon={faLock} />
                                 </span>
-                                <input type="password" required></input>
+                                <input
+                                    type="password"
+                                    required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                ></input>
                                 <label>password</label>
                             </div>
                             <div className={cx('remember-forgot')}>
@@ -45,7 +93,7 @@ function SignUp() {
                                     <input type="checkbox"></input> I agree to the terms & conditions
                                 </label>
                             </div>
-                            <button type="submit" className={cx('btn')}>
+                            <button type="submit" className={cx('btn')} onClick={handleRegister}>
                                 Register
                             </button>
                             <div className={cx('login-register')}>

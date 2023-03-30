@@ -21,14 +21,16 @@ function SignIn() {
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState('/login');
     const [isCheck, setIsCheck] = useState(false);
+    const [id, setId] = useState(-1);
 
     console.log(email, password);
-
+    console.log(id);
     useEffect(() => {
         let i = 0;
         const count = state.users.length;
         for (i; i < count; i++) {
             if (email === state.users[i].email && password === state.users[i].password) {
+                setId(i);
                 setIsCheck(true);
             }
         }
@@ -42,7 +44,7 @@ function SignIn() {
             alert('sai tk mat khau');
         } else {
             alert('Dang nhap thanh cong');
-            dispatch(action.setLogin(isCheck));
+            dispatch(action.setLogin(isCheck, id));
         }
     };
 

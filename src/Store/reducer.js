@@ -1,22 +1,26 @@
-import { SET_LOGIN } from './Constants';
+import { SET_LOGIN, SET_LOGOUT, SET_REGISTER } from './Constants';
 
-const initState = {
+let initState = {
     isCheckLogin: false,
+    id: -1,
     users: [
         {
-            name: 'luan',
+            name: 'Huynh Luan',
             email: 'luan@gmail.com',
             password: 'luan',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1jWXyTKohVxDeT558vrVvvgvytbY_2cA1rUWMA9mHwwllPgFJo9AKMoihcnDT5zvsHVg&usqp=CAU',
         },
         {
-            name: 'phuc',
+            name: 'Hoang Phuc',
             email: 'phuc@gmail.com',
             password: 'phuc',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1jWXyTKohVxDeT558vrVvvgvytbY_2cA1rUWMA9mHwwllPgFJo9AKMoihcnDT5zvsHVg&usqp=CAU',
         },
         {
-            name: 'tien',
+            name: 'Tien Thanh',
             email: 'tien@gmail.com',
             password: 'tien',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1jWXyTKohVxDeT558vrVvvgvytbY_2cA1rUWMA9mHwwllPgFJo9AKMoihcnDT5zvsHVg&usqp=CAU',
         },
     ],
     userInput: {},
@@ -32,6 +36,17 @@ function reducer(state, action) {
             return {
                 ...state,
                 isCheckLogin: action.payload,
+                id: action.id,
+            };
+        case SET_LOGOUT:
+            return {
+                ...state,
+                isCheckLogin: action.payload,
+            };
+        case SET_REGISTER:
+            return {
+                ...state,
+                users: [...state.users, action.payload],
             };
         default:
             throw new Error('Invalid action');

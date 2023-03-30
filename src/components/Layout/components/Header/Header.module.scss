@@ -54,10 +54,62 @@
     font-size: 1.2rem;
 }
 
+//popper
+.popper {
+    width: 234px;
+}
+
+.wrapper-popper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #afa1a1;
+    }
+}
+
+.icon-popper {
+    height: 100%;
+    padding-left: 18px;
+    font-weight: 700;
+}
+
+.btn-popper {
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: transparent;
+    padding-left: 10px;
+    text-align: start;
+}
+
+//users
+
+.users {
+    display: flex;
+}
+
 .user-avatar {
     width: 32px;
     height: 32px;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
+}
+.p-wrapper {
+    height: 100%;
+    display: block;
+    align-items: center;
+}
+
+.user-name {
+    margin-top: 5px;
+    padding-left: 7px;
+    font-size: 1.4rem;
 }

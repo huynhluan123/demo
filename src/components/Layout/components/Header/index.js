@@ -1,84 +1,27 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleQuestion,
-    faEarthAsia,
-    faEllipsisVertical,
-    faGear,
-    faKeyboard,
-    faRightToBracket,
-    faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
+import { faGear, faRightToBracket, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 
 import image from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/components/Button';
-import Menu from '~/components/Popper/Menus';
+
 import { Link } from 'react-router-dom';
 import Search from '../Search';
-import { useStore } from '~/Store';
+import { useStore, action } from '~/Store';
+import Tippy from '@tippyjs/react/headless';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 
 const cx = classNames.bind(styles);
 
-const MENU_ITEM = [
-    {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'tieng viet',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keyboard shortcuts',
-    },
-];
-
 function Header() {
-    const [state] = useStore();
+    const [state, dispatch] = useStore();
 
     const currentUser = state.isCheckLogin;
 
-    const handleMenuChange = (menuItem) => {
-        switch (menuItem.type) {
-            case 'language':
-                //handle change language
-                break;
-            default:
-        }
-    };
+    const id = state.id;
 
-    const userMenu = [
-        {
-            icon: <FontAwesomeIcon icon={faGear} />,
-            title: 'Setting',
-            to: '/setting',
-        },
-        ...MENU_ITEM,
-        {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
-            title: 'Log out',
-            to: '/Home',
-            separate: true,
-        },
-    ];
+    const users = state.users;
 
     return (
         <header className={cx('wrapper')}>
@@ -89,6 +32,7 @@ function Header() {
                     </Link>
                 </div>
                 <Search />
+                {/* ul li */}
 
                 <div className={cx('action')}>
                     {currentUser ? (
@@ -103,19 +47,47 @@ function Header() {
                             Đăng nhập
                         </Button>
                     )}
-                    <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
-                        {currentUser ? (
-                            <img
-                                className={cx('user-avatar')}
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMo03l8HKKj-8SUhLfwJ9qGXw4TvyKWNcLlA&usqp=CAU"
-                                alt="Nguyen Van A"
-                            />
-                        ) : (
-                            <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </button>
-                        )}
-                    </Menu>
+                    {currentUser && (
+                        <Tippy
+                            interactive // sel vao box
+                            delay={[0, 700]}
+                            placement="bottom-end"
+                            render={(attrs) => (
+                                <PopperWrapper>
+                                    <div className={cx('popper')} tabIndex="-1" {...attrs}>
+                                        <div className={cx('wrapper-popper')}>
+                                            <Button
+                                                className={cx('btn-popper')}
+                                                leftIcon={<FontAwesomeIcon icon={faGear} />}
+                                                to="/setting"
+                                                text
+                                            >
+                                                Setting
+                                            </Button>
+                                        </div>
+                                        <div className={cx('wrapper-popper')}>
+                                            <div className={cx('icon-popper')}>
+                                                <FontAwesomeIcon icon={faSignOut} />
+                                            </div>
+                                            <button
+                                                className={cx('btn-popper')}
+                                                onClick={() => dispatch(action.setLogOut(false))}
+                                            >
+                                                Log Out
+                                            </button>
+                                        </div>
+                                    </div>
+                                </PopperWrapper>
+                            )}
+                        >
+                            <div className={cx('users')}>
+                                <img className={cx('user-avatar')} src={users[id].image} alt={users[id].name} />
+                                <div className={cx('p-wrapper')}>
+                                    <p className={cx('user-name')}>{users[id].name}</p>
+                                </div>
+                            </div>
+                        </Tippy>
+                    )}
                 </div>
             </div>
         </header>
