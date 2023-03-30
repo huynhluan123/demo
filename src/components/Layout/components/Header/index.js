@@ -16,7 +16,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menus';
 import { Link } from 'react-router-dom';
 import Search from '../Search';
-import { currentUser } from '~/Story/Blog';
+import { useStore } from '~/Store';
 
 const cx = classNames.bind(styles);
 
@@ -52,6 +52,10 @@ const MENU_ITEM = [
 ];
 
 function Header() {
+    const [state] = useStore();
+
+    const currentUser = state.isCheckLogin;
+
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':

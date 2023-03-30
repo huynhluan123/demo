@@ -5,40 +5,44 @@ import styles from '~/pages/Login/Login.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { account, currentUser } from '~/Story/Blog';
-import { DefaultLayout } from '~/components/Layout';
 import Button from '~/components/Button';
+import { useStore, action } from '~/Store';
 
 const cx = classNames.bind(styles);
 
-let accounts = [...account];
-
 function SignIn() {
+    const [state, dispatch] = useStore();
+
+    // const [users] = state;
+
+    console.log(state);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState('/login');
-    console.log(email, password);
+    const [isCheck, setIsCheck] = useState(false);
 
-    console.log(currentUser);
+    console.log(email, password);
 
     useEffect(() => {
         let i = 0;
-        let isCheck = false;
-        for (i; i < accounts.length; i++) {
-            if (email === account[i].email && password === account[i].password) {
-                isCheck = true;
+        const count = state.users.length;
+        for (i; i < count; i++) {
+            if (email === state.users[i].email && password === state.users[i].password) {
+                setIsCheck(true);
             }
         }
         if (isCheck) {
             setLogin('/');
         }
-    }, [email, password]);
+    }, [email, isCheck, password, state.users]);
 
     const handleSignIn = () => {
         if (login === '/login') {
             alert('sai tk mat khau');
         } else {
             alert('Dang nhap thanh cong');
+            dispatch(action.setLogin(isCheck));
         }
     };
 

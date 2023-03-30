@@ -19,7 +19,7 @@ function Search() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1]);
+            setSearchResult([]);
         }, 3000);
     });
 

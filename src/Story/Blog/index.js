@@ -10,12 +10,12 @@ export let account = [
         password: 'luan',
     },
     {
-        name: 'luan',
+        name: 'phuc',
         email: 'phuc@gmail.com',
         password: 'phuc',
     },
     {
-        name: 'luan',
+        name: 'tien',
         email: 'tien@gmail.com',
         password: 'tien',
     },
