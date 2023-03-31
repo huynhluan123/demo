@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #181821;
 }
 
 .logo {
@@ -28,6 +29,23 @@
 
 .logo-news {
     width: 100px;
+}
+
+//nav  thanh dieu huong
+.nav-wrapper {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.btn-nav {
+    color: var(--white);
+    background-color: transparent;
+    &:hover {
+        color: black;
+        background-color: #afa1a1;
+    }
 }
 
 .action {
@@ -96,8 +114,9 @@
 }
 
 .user-avatar {
-    width: 32px;
-    height: 32px;
+    border: 2px solid var(--white);
+    width: 35px;
+    height: 35px;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
@@ -109,6 +128,7 @@
 }
 
 .user-name {
+    color: var(--white);
     margin-top: 5px;
     padding-left: 7px;
     font-size: 1.4rem;

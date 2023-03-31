@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { useStore, action } from '~/Store';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -16,16 +16,16 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    let user = { name: name, email: email, password: password, image: '' };
+    console.log(state);
 
     // console.log(name, email, password);
-
-    console.log(user);
+    let user = { name: name, email: email, password: password, image: '' };
 
     const handleRegister = () => {
         let i = 0;
         let isCheckLogOut = true;
         const count = state.users.length;
+
         for (i; i < count; i++) {
             if (email === state.users[i].email) {
                 alert('Tài khoản email đã có trên hệ thống Vui lòng đổi email ');
@@ -34,9 +34,9 @@ function SignUp() {
             }
         }
         if (isCheckLogOut) {
-            alert('Tạo tài khoản thành công');
-
-            dispatch(action.setRegister(user)); // truyen vao handle
+            state.users.push(user);
+            dispatch(action.setRegister(user));
+            // truyen vao handle
         }
     };
 

@@ -9,8 +9,19 @@
     width: 100%;
     max-width: 100%;
     display: flex;
+    margin-top: 55px;
 }
+
+// content
 
 .content {
     flex: 1; //chiem khoan trong con lai
+}
+
+.content-left {
+    width: 15%;
+}
+
+.content-right {
+    width: 15%;
 }

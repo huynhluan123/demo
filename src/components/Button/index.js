@@ -10,6 +10,7 @@ function Button({
     normal,
     primary,
     outline,
+    textWhite,
     to,
     small,
     large,
@@ -49,6 +50,7 @@ function Button({
     const classes = cx('wrapper', {
         [className]: className, // dung classnames de css
         normal,
+        textWhite,
         primary,
         outline,
         small,

@@ -1,18 +1,19 @@
-import { HeaderOnly } from '~/components/Layout';
-
 import Home from '~/pages/Home';
-import Following from '~/pages/Following';
-import Profile from '~/pages/Profile';
-import Upload from '~/pages/Upload';
 import SignIn from '~/pages/Login/SignIn';
 import SignUp from '~/pages/Login/SignUp';
+import Introduce from '~/pages/Introduce';
+import News from '~/pages/News';
+import PostNew from '~/pages/PostNew';
+import { HeaderOnly } from '~/components/Layout';
+import WordSchool from '~/pages/WordSchool';
 
 // public routes
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
-    { path: '/upload', component: Upload, layout: HeaderOnly },
+    { path: '/introduce', component: Introduce },
+    { path: '/news', component: News },
+    { path: '/postNew', component: PostNew },
+    { path: '/wordSchool', component: WordSchool },
     // { path: '/search', component: Search, layout: null },
     { path: '/login', component: SignIn, layout: HeaderOnly },
     { path: '/register', component: SignUp, layout: HeaderOnly },

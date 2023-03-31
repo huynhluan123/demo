@@ -1,6 +1,6 @@
 import { SET_LOGIN, SET_LOGOUT, SET_REGISTER } from './Constants';
 
-let initState = {
+const initState = {
     isCheckLogin: false,
     id: -1,
     users: [
@@ -30,7 +30,6 @@ let initState = {
 };
 
 function reducer(state, action) {
-    console.log(action.payload);
     switch (action.type) {
         case SET_LOGIN:
             return {
@@ -46,7 +45,6 @@ function reducer(state, action) {
         case SET_REGISTER:
             return {
                 ...state,
-                users: [...state.users, action.payload],
             };
         default:
             throw new Error('Invalid action');

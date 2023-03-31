@@ -1,5 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faRightToBracket, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBookmark,
+    faGear,
+    faHouse,
+    faReceipt,
+    faRightToBracket,
+    faSchool,
+    faSignOut,
+    faStar,
+    faSuitcase,
+} from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 
 import image from '~/assets/images';
@@ -7,7 +17,6 @@ import styles from './Header.module.scss';
 import Button from '~/components/Button';
 
 import { Link } from 'react-router-dom';
-import Search from '../Search';
 import { useStore, action } from '~/Store';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -31,21 +40,64 @@ function Header() {
                         <img className={cx('logo-news')} src={image.logoNews} alt="University_News" />
                     </Link>
                 </div>
-                <Search />
-                {/* ul li */}
+                <div className={cx('nav-wrapper')}>
+                    <Button textWhite leftIcon={<FontAwesomeIcon icon={faHouse} />} className={cx('btn-nav')} to="/">
+                        Home
+                    </Button>
+
+                    <Button
+                        textWhite
+                        leftIcon={<FontAwesomeIcon icon={faSchool} />}
+                        className={cx('btn-nav')}
+                        to="/news"
+                    >
+                        News
+                    </Button>
+
+                    <Button
+                        textWhite
+                        leftIcon={<FontAwesomeIcon icon={faStar} />}
+                        className={cx('btn-nav')}
+                        to="/postNew"
+                    >
+                        Post new{' '}
+                    </Button>
+                    <Button
+                        textWhite
+                        leftIcon={<FontAwesomeIcon icon={faSuitcase} />}
+                        className={cx('btn-nav')}
+                        to="/wordSchool"
+                    >
+                        Đoàn - Hội
+                    </Button>
+                    <Button
+                        textWhite
+                        leftIcon={<FontAwesomeIcon icon={faBookmark} />}
+                        className={cx('btn-nav')}
+                        to="/introduce"
+                    >
+                        Giới thiệu
+                    </Button>
+                </div>
 
                 <div className={cx('action')}>
                     {currentUser ? (
                         <></>
                     ) : (
-                        <Button
-                            className={cx('btn-dn')}
-                            primary
-                            to="/login"
-                            leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                        >
-                            Đăng nhập
-                        </Button>
+                        <>
+                            <Button
+                                className={cx('btn-dn')}
+                                primary
+                                to="/login"
+                                leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                            >
+                                Đăng nhập
+                            </Button>
+
+                            <Button primary to="/register" leftIcon={<FontAwesomeIcon icon={faReceipt} />}>
+                                Đăng ký
+                            </Button>
+                        </>
                     )}
                     {currentUser && (
                         <Tippy
