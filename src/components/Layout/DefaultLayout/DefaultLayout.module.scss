@@ -10,12 +10,14 @@
     max-width: 100%;
     display: flex;
     margin-top: 55px;
+    background-color: #f1f1f1;
 }
 
 // content
 
 .content {
     flex: 1; //chiem khoan trong con lai
+    background-color: var(--white);
 }
 
 .content-left {

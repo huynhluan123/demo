@@ -60,7 +60,7 @@ function Header() {
                         className={cx('btn-nav')}
                         to="/postNew"
                     >
-                        Post new{' '}
+                        Post{' '}
                     </Button>
                     <Button
                         textWhite

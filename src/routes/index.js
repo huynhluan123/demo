@@ -6,17 +6,19 @@ import News from '~/pages/News';
 import PostNew from '~/pages/PostNew';
 import { HeaderOnly } from '~/components/Layout';
 import WordSchool from '~/pages/WordSchool';
+import Details from '~/pages/Details';
 
 // public routes
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/introduce', component: Introduce },
-    { path: '/news', component: News },
-    { path: '/postNew', component: PostNew },
-    { path: '/wordSchool', component: WordSchool },
+    { path: '/introduce', component: Introduce, layout: HeaderOnly },
+    { path: '/news', component: News, layout: HeaderOnly },
+    { path: '/postNew', component: PostNew, layout: HeaderOnly },
+    { path: '/wordSchool', component: WordSchool, layout: HeaderOnly },
     // { path: '/search', component: Search, layout: null },
     { path: '/login', component: SignIn, layout: HeaderOnly },
     { path: '/register', component: SignUp, layout: HeaderOnly },
+    { path: '/details', component: Details, layout: HeaderOnly },
 ];
 const privateRouter = [];
 
