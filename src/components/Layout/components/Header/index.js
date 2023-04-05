@@ -20,17 +20,31 @@ import { Link } from 'react-router-dom';
 import { useStore, action } from '~/Store';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Header() {
     const [state, dispatch] = useStore();
 
-    const currentUser = state.isCheckLogin;
+    const [href, setHref] = useState();
 
-    const id = state.id;
+    const currentUser = localStorage.getItem('login');
+
+    const id = localStorage.getItem('id');
 
     const users = state.users;
+
+    useEffect(() => {
+        if (id) {
+            setHref('/login');
+        }
+    }, [id]);
+
+    const handelLogout = () => {
+        localStorage.removeItem('login');
+        localStorage.removeItem('id');
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -121,12 +135,10 @@ function Header() {
                                             <div className={cx('icon-popper')}>
                                                 <FontAwesomeIcon icon={faSignOut} />
                                             </div>
-                                            <button
-                                                className={cx('btn-popper')}
-                                                onClick={() => dispatch(action.setLogOut(false))}
-                                            >
+
+                                            <Button to={href} className={cx('btn-popper')} onClick={handelLogout}>
                                                 Log Out
-                                            </button>
+                                            </Button>
                                         </div>
                                     </div>
                                 </PopperWrapper>

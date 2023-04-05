@@ -31,20 +31,21 @@ function SignIn() {
         for (i; i < count; i++) {
             if (email === state.users[i].email && password === state.users[i].password) {
                 setId(i);
+                localStorage.setItem('login', 'true');
+                localStorage.setItem('id', id);
                 setIsCheck(true);
             }
         }
         if (isCheck) {
             setLogin('/');
         }
-    }, [email, isCheck, password, state.users]);
+    }, [email, id, isCheck, password, state.users]);
 
     const handleSignIn = () => {
         if (login === '/login') {
             alert('sai tk mat khau');
         } else {
             alert('Dang nhap thanh cong');
-            dispatch(action.setLogin(isCheck, id));
         }
     };
 
