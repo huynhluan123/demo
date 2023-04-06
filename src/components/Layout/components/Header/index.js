@@ -16,8 +16,8 @@ import image from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/components/Button';
 
-import { Link } from 'react-router-dom';
-import { useStore, action } from '~/Store';
+import { Link, NavLink } from 'react-router-dom';
+import { useStore } from '~/Store';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useEffect, useState } from 'react';
@@ -25,13 +25,13 @@ import { useEffect, useState } from 'react';
 const cx = classNames.bind(styles);
 
 function Header() {
-    const [state, dispatch] = useStore();
+    const [state] = useStore();
 
     const [href, setHref] = useState();
-
     const currentUser = localStorage.getItem('login');
 
     const id = localStorage.getItem('id');
+    // eslint-disable-next-line no-unused-vars
 
     const users = state.users;
 
@@ -55,43 +55,38 @@ function Header() {
                     </Link>
                 </div>
                 <div className={cx('nav-wrapper')}>
-                    <Button textWhite leftIcon={<FontAwesomeIcon icon={faHouse} />} className={cx('btn-nav')} to="/">
-                        Home
-                    </Button>
+                    <NavLink className={(nav) => cx('btn-nav', { active: nav.isActive })} to="/">
+                        <span className={cx('icon-nav')}>
+                            <FontAwesomeIcon icon={faHouse} />
+                        </span>
+                        <span className={cx('text-nav')}> Home</span>
+                    </NavLink>
 
-                    <Button
-                        textWhite
-                        leftIcon={<FontAwesomeIcon icon={faSchool} />}
-                        className={cx('btn-nav')}
-                        to="/news"
-                    >
-                        News
-                    </Button>
+                    <NavLink className={(nav) => cx('btn-nav', { active: nav.isActive })} to="/news">
+                        <span className={cx('icon-nav')}>
+                            <FontAwesomeIcon icon={faSchool} />
+                        </span>
+                        <span className={cx('text-nav')}> News</span>
+                    </NavLink>
 
-                    <Button
-                        textWhite
-                        leftIcon={<FontAwesomeIcon icon={faStar} />}
-                        className={cx('btn-nav')}
-                        to="/postNew"
-                    >
-                        Post{' '}
-                    </Button>
-                    <Button
-                        textWhite
-                        leftIcon={<FontAwesomeIcon icon={faSuitcase} />}
-                        className={cx('btn-nav')}
-                        to="/wordSchool"
-                    >
-                        Đoàn - Hội
-                    </Button>
-                    <Button
-                        textWhite
-                        leftIcon={<FontAwesomeIcon icon={faBookmark} />}
-                        className={cx('btn-nav')}
-                        to="/introduce"
-                    >
-                        Giới thiệu
-                    </Button>
+                    <NavLink className={(nav) => cx('btn-nav', { active: nav.isActive })} to="/postNew">
+                        <span className={cx('icon-nav')}>
+                            <FontAwesomeIcon icon={faStar} />
+                        </span>
+                        <span className={cx('text-nav')}>Post</span>
+                    </NavLink>
+                    <NavLink className={(nav) => cx('btn-nav', { active: nav.isActive })} to="/wordSchool">
+                        <span className={cx('icon-nav')}>
+                            <FontAwesomeIcon icon={faSuitcase} />
+                        </span>
+                        <span className={cx('text-nav')}> Đoàn - Hội</span>
+                    </NavLink>
+                    <NavLink className={(nav) => cx('btn-nav', { active: nav.isActive })} to="/introduce">
+                        <span className={cx('icon-nav')}>
+                            <FontAwesomeIcon icon={faBookmark} />
+                        </span>
+                        <spa className={cx('text-nav')}> Giới thiệu</spa>
+                    </NavLink>
                 </div>
 
                 <div className={cx('action')}>

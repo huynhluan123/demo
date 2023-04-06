@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function NewsComp() {
-    const [state, dispatch] = useStore();
+    const [state] = useStore();
     return (
         <div className={cx('news-wrapper')}>
             <div className={cx('news-title')}>

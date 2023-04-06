@@ -41,12 +41,34 @@
 }
 
 .btn-nav {
+    display: flex;
+    width: auto;
+    height: 70%;
+    margin-left: 8px;
     color: var(--white);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
     background-color: transparent;
+    transition: background-color ease-in-out 200ms;
     &:hover {
         color: black;
-        background-color: #afa1a1;
+        background-color: #ffff;
     }
+}
+
+.active {
+    color: black;
+    background-color: #ffff;
+}
+
+.icon-nav {
+    padding-left: 13px;
+    padding-right: 5px;
+}
+
+.text-nav {
+    padding-right: 13px;
 }
 
 .action {
@@ -107,6 +129,9 @@
     padding-left: 10px;
     text-align: start;
     color: #181821;
+    &:hover {
+        color: #181821;
+    }
 }
 
 //users
@@ -134,4 +159,16 @@
     margin-top: 5px;
     padding-left: 7px;
     font-size: 1.4rem;
+}
+
+//headeronly
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 55px;
+}
+.content {
+    width: 100%;
+    height: auto;
 }

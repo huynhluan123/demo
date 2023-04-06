@@ -155,8 +155,8 @@
 }
 
 .input-box input {
-    width: 100%;
-    height: 100%;
+    width: 340px;
+    height: 50px;
     background: transparent;
     border: none;
     outline: none;
@@ -217,15 +217,12 @@
     color: white;
 }
 .btn {
+    align-items: center;
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 45px;
     background: #c4103d;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #e4e4e4;
 }
 .form-box .login-register {
     font-size: 16px;

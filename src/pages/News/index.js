@@ -1,14 +1,11 @@
-import Footer from '~/components/Layout/DefaultLayout/Footer';
-
 import { useStore } from '~/Store';
-import { Link } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import styles from './News.module.scss';
 
 const cx = classNames.bind(styles);
 function News() {
-    const [state, dispatch] = useStore();
+    const [state] = useStore();
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
@@ -33,7 +30,6 @@ function News() {
                 </div>
                 <div className={cx('content-right')}></div>
             </div>
-            <Footer />
         </div>
     );
 }

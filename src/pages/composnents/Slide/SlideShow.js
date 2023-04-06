@@ -1,49 +1,31 @@
-import { useStore } from '~/Store';
-import classNames from 'classnames/bind';
-import styles from './SlideShow.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import './slideShow.jpg';
-const cx = classNames.bind(styles);
+import image from '~/assets/images';
 
 function SlideShow() {
-    const [state] = useStore();
-
     return (
         <Carousel>
             <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://amis.misa.vn/wp-content/uploads/2022/06/chinh-sach-quang-cao-facebook-2022-thumbnail.jpg"
-                    alt="First slide"
-                />
+                <img className="d-block w-100" src={image.slide1} alt="First slide" />
                 <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>Nghề nghiệp</h3>
+                    <p>Đó là một cơ hội tuyệt vời để theo đuổi một nghề nghiệp hay một sự nghiệp.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://amis.misa.vn/wp-content/uploads/2022/06/chinh-sach-quang-cao-facebook-2022-thumbnail.jpg"
-                    alt="Second slide"
-                />
+                <img className="d-block w-100" src={image.slide1} alt="Second slide" />
 
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>Cuộc sống</h3>
+                    <p>Không có cuộc sống nào là tự do, đôi khi nhẹ nhàng với một tuyên truyền run rẩy.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://amis.misa.vn/wp-content/uploads/2022/06/chinh-sach-quang-cao-facebook-2022-thumbnail.jpg"
-                    alt="Third slide"
-                />
+                <img className="d-block w-100" src={image.slide1} alt="Third slide" />
 
                 <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <h3>Gia Đình</h3>
+                    <p>Đó là một cơ hội tuyệt vời để theo đuổi một nghề nghiệp hay một sự nghiệp.</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import Button from '~/components/Button';
-import { useStore, action } from '~/Store';
+import { useStore } from '~/Store';
 
 const cx = classNames.bind(styles);
 
 function SignIn() {
-    const [state, dispatch] = useStore();
+    const [state] = useStore();
 
     // const [users] = state;
 
@@ -103,7 +103,7 @@ function SignIn() {
                                     Forgot password
                                 </Link>
                             </div>
-                            <Button large to={login} className={cx('btn')} onClick={handleSignIn}>
+                            <Button primary to={login} className={cx('btn')} onClick={handleSignIn}>
                                 Sign In
                             </Button>
                             <div className={cx('login-register')}>
